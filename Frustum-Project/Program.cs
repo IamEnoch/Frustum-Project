@@ -34,7 +34,7 @@ namespace Frustum_Project
             var bucket_SA = pi * slantHeight * (bottRad + topRad) + (pi * bottRad * bottRad);
             var buckets = area_of_sheets / bucket_SA;
 
-            Console.WriteLine("The total number of buckets that can be made is {0}", Math.Floor(buckets));                
+            Console.WriteLine($"The total number of buckets that can be made is {Math.Floor(buckets)}");                
 
         }
     }
