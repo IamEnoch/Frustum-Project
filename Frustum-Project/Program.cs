@@ -30,9 +30,9 @@ namespace Frustum_Project
             Console.WriteLine("Width of the sheet");
             var width = Convert.ToDouble(Console.ReadLine());
 
-            var area_of_sheets = (sheetsNo * len * width);
-            var bucket_SA = (pi * slantHeight * (bottRad + topRad) + (pi * bottRad * bottRad));
-            var buckets = (area_of_sheets / bucket_SA);
+            var area_of_sheets = sheetsNo * len * width;
+            var bucket_SA = pi * slantHeight * (bottRad + topRad) + (pi * bottRad * bottRad);
+            var buckets = area_of_sheets / bucket_SA;
 
             Console.WriteLine("The total number of buckets that can be made is {0}", Math.Floor(buckets));                
 
