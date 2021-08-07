@@ -6,13 +6,13 @@ namespace Frustum_Project
     {
         static void Main(string[] args)
         {
-            //all unit dimensions should be uniform
+            //all units dimensions should be uniform
             //Metallic sheets are rectangular
             //Dimensions needed for the buckets include == top radius, Bottom radius, Salnt height
             
             const double pi = 3.14;
 
-            Console.WriteLine("Bucket Dimensiond\nEnter the length of the Top Radius");
+            Console.WriteLine("Bucket Dimensions\nEnter the length of the Top Radius");
             var topRad = Convert.ToDouble(Console.ReadLine());
 
             Console.WriteLine("Enter the length of the bottom Radius");
