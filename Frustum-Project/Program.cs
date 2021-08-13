@@ -4,14 +4,20 @@ namespace Frustum_Project
 {
     class Program
     {
+        static double AreaOfSheets(double x,double y,double Z) 
+        {
+            return x * y * Z;
+        }
+        static double BucketSA(double x,double b,double t) 
+        {
+            return Math.PI * x * (b + t) + (Math.PI * b * b);
+        }
         static void Main(string[] args)
         {
             //all units dimensions should be uniform
             //Metallic sheets are rectangular
             //Dimensions needed for the buckets include == top radius, Bottom radius, Salnt height
             
-            const double pi = 3.14;
-
             Console.WriteLine("Bucket Dimensions\nEnter the length of the Top Radius");
             var topRad = Convert.ToDouble(Console.ReadLine());
 
@@ -30,8 +36,8 @@ namespace Frustum_Project
             Console.WriteLine("Width of the sheet");
             var width = Convert.ToDouble(Console.ReadLine());
 
-            var area_of_sheets = sheetsNo * len * width;
-            var bucket_SA = pi * slantHeight * (bottRad + topRad) + (pi * bottRad * bottRad);
+            var area_of_sheets = AreaOfSheets(sheetsNo, len, width);
+            var bucket_SA = BucketSA(slantHeight, bottRad, topRad);
             var buckets = area_of_sheets / bucket_SA;
 
             Console.WriteLine($"The total number of buckets that can be made is {Math.Floor(buckets)}");                
