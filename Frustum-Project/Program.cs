@@ -2,43 +2,57 @@
 
 namespace Frustum_Project
 {
+    class Bucket
+    {
+        public double TopRadius;
+        public double BottomRadius;
+        public double SlantHeight;
+        public double SheetNumber;
+        public double Length;
+        public double Width;
+    }
     class Program
     {
-        static double AreaOfSheets(double x,double y,double Z) 
+        static double AreaOfSheets(double SheetNumber,double Length,double Width) 
         {
-            return x * y * Z;
+            return SheetNumber * Length * Width;
         }
-        static double BucketSA(double x,double b,double t) 
+        static double BucketSA(double SlantHeight,double BottomRadius,double TopRadius) 
         {
-            return Math.PI * x * (b + t) + (Math.PI * b * b);
+            return Math.PI * SlantHeight * (BottomRadius + TopRadius) + (Math.PI * BottomRadius * BottomRadius);
+        }
+        static double Buckets(double AreaOfsheets, double BucketSA)
+        {
+            return AreaOfsheets / BucketSA;
         }
         static void Main(string[] args)
         {
             //all units dimensions should be uniform
             //Metallic sheets are rectangular
             //Dimensions needed for the buckets include == top radius, Bottom radius, Salnt height
+            Bucket customer1 = new Bucket();
             
             Console.WriteLine("Bucket Dimensions\nEnter the length of the Top Radius");
-            var topRad = Convert.ToDouble(Console.ReadLine());
+            customer1.TopRadius = Convert.ToDouble(Console.ReadLine());
 
             Console.WriteLine("Enter the length of the bottom Radius");
-            var bottRad = Convert.ToDouble(Console.ReadLine());
+            customer1.BottomRadius = Convert.ToDouble(Console.ReadLine());
 
             Console.WriteLine("Enter the length of the slant height");
-            var slantHeight = Convert.ToDouble(Console.ReadLine());
+            customer1.SlantHeight = Convert.ToDouble(Console.ReadLine());
 
             Console.WriteLine("Enter the number of sheets you would like to use");
-            int sheetsNo = Convert.ToInt32(Console.ReadLine());
+            customer1.SheetNumber = Convert.ToInt32(Console.ReadLine());
 
             Console.WriteLine("Length of the sheet");
-            var len = Convert.ToDouble(Console.ReadLine());
+            customer1.Length = Convert.ToDouble(Console.ReadLine());
 
             Console.WriteLine("Width of the sheet");
-            var width = Convert.ToDouble(Console.ReadLine());
+            customer1.Width = Convert.ToDouble(Console.ReadLine());
 
-            var area_of_sheets = AreaOfSheets(sheetsNo, len, width);
-            var bucket_SA = BucketSA(slantHeight, bottRad, topRad);
-            var buckets = area_of_sheets / bucket_SA;
+            //var area_of_sheets = AreaOfSheets(SheetNumber, Length, Width);
+            //var bucket_SA = BucketSA(SlantHeight, BottomRadius, TopRadius);
+            var buckets = Buckets(AreaOfSheets(customer1.SheetNumber, customer1.Length, customer1.Width), BucketSA(customer1.SlantHeight, customer1.BottomRadius, customer1.TopRadius));
 
             Console.WriteLine($"The total number of buckets that can be made is {Math.Floor(buckets)}");                
 
